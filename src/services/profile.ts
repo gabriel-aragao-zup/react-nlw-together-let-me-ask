@@ -5,7 +5,7 @@ export type Profile = {
   photoURL: string;
 }
 
-export function lmaUserFromFirebaseUser(user: User) : Profile {
+export function profileFromFirebaseUser(user: User) : Profile {
   const lmaUid = user.uid;
   let lmaName;
   let lmaPhotoURL;
