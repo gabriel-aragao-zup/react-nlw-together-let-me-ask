@@ -30,11 +30,11 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }, [])
 
-  function signInWithGoogle() {
+  async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, provider)
-      .then((result) => { setProfile(profileFromFirebaseUser(result.user)); });
+    const result = await signInWithPopup(auth, provider)
+    setProfile(profileFromFirebaseUser(result.user));
   }
 
   return (
