@@ -44,6 +44,10 @@ export function Home() {
         alert(`This room is already finished`)
         return;
       }
+      if(snapshot.val().authorId === profile?.uid){
+        history.push(`/admin/rooms/${roomCode}`);
+        return;
+      }
       history.push(`/rooms/${roomCode}`);
     });
   }
