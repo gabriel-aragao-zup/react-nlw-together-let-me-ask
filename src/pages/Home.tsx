@@ -36,9 +36,12 @@ export function Home() {
     }
     const roomRef = await ref(database, `rooms/${roomCode}`);
     onValue(roomRef, (snapshot) => {
-      const room = snapshot.val();
-      if(!room){
+      if(!snapshot.exists()){
         alert(`Could not find room ${roomCode}`)
+        return;
+      }
+      if(snapshot.val().endedAt){
+        alert(`This room is already finished`)
         return;
       }
       history.push(`/rooms/${roomCode}`);
